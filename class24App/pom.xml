@@ -5,7 +5,7 @@
 
   <groupId>com.class24.mvn</groupId>
   <artifactId>class24App</artifactId>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
 
   <name>class24App</name>
   <!-- FIXME change it to the project's website -->
@@ -87,4 +87,15 @@
       </plugins>
     </pluginManagement>
   </build>
+  <!-- Where mvn deploy sends artifacts -->
+ <distributionManagement>
+<repository>
+<id>nexus-releases</id>
+<url>http://18.216.250.240:8081/repository/maven-releases/</url>
+</repository>
+<snapshotRepository>
+<id>nexus-snapshots</id>
+<url>http://18.216.250.240:8081/repository/maven-snapshots/</url>
+</snapshotRepository>
+</distributionManagement>
 </project>
