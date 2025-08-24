@@ -1,0 +1,33 @@
+name: A sample build pipeline for a maven project
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Validate POM
+        run: mvn validate
+
+      - name: Run tests
+        run: mvn test
+
+      - name: Package project
+        run: mvn package
+
+      - name: Show built artifacts in target/
+        run: |
+          echo "Listing target/ contents so you can see the built artifacts:"
+          ls -la target
